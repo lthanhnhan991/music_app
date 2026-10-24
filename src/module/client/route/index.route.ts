@@ -17,6 +17,7 @@ import verificationRoute from './verification.route';
 // middleware
 import {isAuthenticated} from '../../../common/middleware/auth.middleware'
 import {generalSettingMiddleware} from "../../../common/middleware/generalSetting.middleware";
+import {rateLimitAuthMiddlewareClient} from "../../../common/middleware/rateLimitAuth.middleware";
 
 export default (app: Application) => {
     app.use('/maintenance', (req, res) => {
@@ -29,27 +30,27 @@ export default (app: Application) => {
         res.redirect('/home');
     });
 
-    app.use('/home', isAuthenticated, homeRoute);
+    app.use('/home', isAuthenticated, rateLimitAuthMiddlewareClient, homeRoute);
 
-    app.use('/topic', isAuthenticated, topicRoute);
+    app.use('/topic', isAuthenticated, rateLimitAuthMiddlewareClient, topicRoute);
 
-    app.use('/song', isAuthenticated, songRoute);
+    app.use('/song', isAuthenticated, rateLimitAuthMiddlewareClient, songRoute);
 
-    app.use('/api', isAuthenticated, apiCommentRoute);
+    app.use('/api', isAuthenticated, rateLimitAuthMiddlewareClient, apiCommentRoute);
 
-    app.use('/singer', isAuthenticated, singerRoute);
+    app.use('/singer', isAuthenticated, rateLimitAuthMiddlewareClient, singerRoute);
 
-    app.use('/profile', isAuthenticated, profileRoute);
+    app.use('/profile', isAuthenticated, rateLimitAuthMiddlewareClient, profileRoute);
 
-    app.use('/notification', isAuthenticated, notification);
+    app.use('/notification', isAuthenticated, rateLimitAuthMiddlewareClient, notification);
 
-    app.use('/playlist', isAuthenticated, playlistRoute);
+    app.use('/playlist', isAuthenticated, rateLimitAuthMiddlewareClient, playlistRoute);
 
-    app.use('/feed', isAuthenticated, feedRoute);
+    app.use('/feed', isAuthenticated, rateLimitAuthMiddlewareClient, feedRoute);
 
-    app.use('/verification', isAuthenticated, verificationRoute);
+    app.use('/verification', isAuthenticated, rateLimitAuthMiddlewareClient, verificationRoute);
 
-    app.use('/contact', isAuthenticated, contactRoute);
+    app.use('/contact', isAuthenticated, rateLimitAuthMiddlewareClient, contactRoute);
 
-    app.use('/auth', userRoute);
+    app.use('/auth', rateLimitAuthMiddlewareClient, userRoute);
 }
