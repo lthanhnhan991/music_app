@@ -16,33 +16,33 @@ import generalSettingRoute from './setting.route';
 
 // middleware
 import {isAuthenticated} from '../../../common/middleware/authServer.middleware'
-import {rateLimitAuthMiddlewareAdmin} from "../../../common/middleware/rateLimitAuth.middleware";
+import {rateLimitAuthMiddlewareAdmin, rateLimitAdmin} from "../../../common/middleware/rateLimitAuth.middleware";
 
 // config
 import prefixNameConfig from '../../../common/config/prefixName.config';
 
 export default (app: Application) => {
-    app.use(prefixNameConfig.PATH_ADMIN + '/dashboard', isAuthenticated, rateLimitAuthMiddlewareAdmin, dashboardsRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/dashboard', isAuthenticated, rateLimitAdmin, dashboardsRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/topic', isAuthenticated, rateLimitAuthMiddlewareAdmin, topicRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/topic', isAuthenticated, rateLimitAdmin, topicRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/song', isAuthenticated, rateLimitAuthMiddlewareAdmin,songRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/song', isAuthenticated, rateLimitAdmin,songRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/user', isAuthenticated, rateLimitAuthMiddlewareAdmin, userRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/user', isAuthenticated, rateLimitAdmin, userRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/permission', isAuthenticated, rateLimitAuthMiddlewareAdmin, permissionRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/permission', isAuthenticated, rateLimitAdmin, permissionRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/singer', isAuthenticated, rateLimitAuthMiddlewareAdmin, singerRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/singer', isAuthenticated, rateLimitAdmin, singerRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/role', isAuthenticated, rateLimitAuthMiddlewareAdmin, roleRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/role', isAuthenticated, rateLimitAdmin, roleRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/manager', isAuthenticated, rateLimitAuthMiddlewareAdmin, managerRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/manager', isAuthenticated, rateLimitAdmin, managerRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/profile', isAuthenticated, rateLimitAuthMiddlewareAdmin, profileRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/profile', isAuthenticated, rateLimitAdmin, profileRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/verification', isAuthenticated, rateLimitAuthMiddlewareAdmin, verificationRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/verification', isAuthenticated, rateLimitAdmin, verificationRoute);
 
-    app.use(prefixNameConfig.PATH_ADMIN + '/setting', isAuthenticated, rateLimitAuthMiddlewareAdmin, generalSettingRoute);
+    app.use(prefixNameConfig.PATH_ADMIN + '/setting', isAuthenticated, rateLimitAdmin, generalSettingRoute);
 
     app.use(prefixNameConfig.PATH_ADMIN + '/auth', rateLimitAuthMiddlewareAdmin, authRoute);
 }
