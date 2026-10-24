@@ -44,8 +44,8 @@ router.get('/change-password', checkAccessPathTimeValidate, controllerInstance.c
 
 router.post('/change-password', changePasswordForgotValidate, controllerInstance.changePasswordReset);
 
-router.get('/debug', controllerInstance.debug);
-
 router.get('/logout', controllerInstance.logout);
+
+router.get('/heathls', controllerInstance.heathls)
 
 export default router;

@@ -88,11 +88,8 @@ export class controller {
         });
     }
 
-    debug(req: Request, res: Response) {
-        res.status(200).json({
-            info: req.session,
-            user: req.user,
-        })
+    heathls(req: Request, res: Response) {
+        res.send('ok');   
     }
 
     logout(req: Request, res: Response) {
